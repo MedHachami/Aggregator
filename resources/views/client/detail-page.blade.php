@@ -183,7 +183,39 @@
         function addComment(event, id) {
             event.preventDefault();
 
-            if()
+            if (localStorage.getItem('token')) {
+                const comment = document.getElementById('comment');
+                const textarea = document.getElementById('textarea');
+                const text = comment.value;
+                if (text == '') {
+                    textarea.style.border = '1px solid red'
+                } else {
+                    fetch('http://127.0.0.1:8000/api/addComment', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                        },
+                        body: JSON.stringify({
+                            post_id: postId,
+                            content: text,
+                        }),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                            textarea.style.border = 'none'
+                            comment.value = ''
+                            fetchcomments()
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            // Handle errors
+                        });
+                }
+            }else{
+                window.location.href = '/login'
+            }
 
 
 
@@ -257,10 +289,7 @@
                 })
         }
 
-        function displayComments(data) {
-
-        }
-
+       
 
         if (localStorage.getItem('token')) {
             fetch('http://127.0.0.1:8000/api/post/' + postId, {
