@@ -64,21 +64,19 @@
         <a href="/"><p
                 class="uppercase sm:text-[35px] text-[28px] font-light cursor-pointer hover:text-[#fc444a] hover:tracking-[0.2em]">
                 Home</p></a>
-        <a href="/news"><p
+        <a href="/page/Europe"><p
                 class="uppercase sm:text-[35px] text-[28px] font-light cursor-pointer hover:text-[#fc444a] hover:tracking-[0.2em]">
-                News</p></a>
-        <a href="/business"><p
+                Europe</p></a>
+        <a href="/page/Afrique"><p
                 class="uppercase sm:text-[35px] text-[28px] font-light cursor-pointer hover:text-[#fc444a] hover:tracking-[0.2em]">
-                Business</p></a>
-        <a href="/politics"><p
+                Afrique</p></a>
+        <a href="/page/Économie"><p
                 class="uppercase sm:text-[35px] text-[28px] font-light cursor-pointer hover:text-[#fc444a] hover:tracking-[0.2em]">
-                Politics</p></a>
-        <a href="/sports"><p
+                Économie</p></a>
+        <a href="/page/Sports"><p
                 class="uppercase sm:text-[35px] text-[28px] font-light cursor-pointer hover:text-[#fc444a] hover:tracking-[0.2em]">
                 Sports</p></a>
-        <a href="/about"><p
-                class="uppercase sm:text-[35px] text-[28px] font-light cursor-pointer hover:text-[#fc444a] hover:tracking-[0.2em]">
-                About</p></a>
+        
     </ul>
 
 </div>
