@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    protected $table= 'comment';
+    protected $table = 'comment';
 
     protected $fillable = [
         'content',
-        'createdBy',
+        'created_by',
         'post_id',
     ];
 
@@ -19,6 +19,11 @@ class Comment extends Model
     public function post()
     {
         return $this->belongsTo(Post::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'created_by'); 
     }
 
 

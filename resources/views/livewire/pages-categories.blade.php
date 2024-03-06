@@ -27,7 +27,7 @@
 
 
  @foreach($posts as $items)
-            <a href="{{ route('detail', $items->id) }}" target="_blank">
+            <a href="{{ route('detail', $items->id) }}" >
                 <div class='w-[350px] h-[300px] relative hover:scale-[110%]'>
 
                     <img src="{{asset($items->image)}}" alt={title} class='object-cover w-full h-full absolute top-0 left-0 z-1' />

@@ -88,9 +88,7 @@ Route::post('/showRss', [FluxRSSController::class, 'showRss'])->name('rss.send')
 
 
 /*======================  mohammed elghanam  =======================*/
-Route::get('/display',function(){
-    return view('admin.dsplay_users');
-});
+Route::get('/display',[UserController::class, 'displayUsers'])->name('users');
 
 /*======================  mohammed elghanam  =======================*/
 
@@ -113,7 +111,10 @@ Route::get('/api/getNombrePostsJours', [StatsadminController::class, 'getNombreP
 
 
 Route::get('/Trends',[Post::class,'displayTrendingNews']);
-Route::get('/newData',[Post::class,'getPosts']);
+Route::get('/post/{postId}', [Post::class, 'getPostByidNotAuth']);
+
+// Route::get('/newData',[Post::class,'getPosts']);
+
 
 
 

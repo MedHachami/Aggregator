@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\FavorisController;
 use App\Http\Controllers\Post;
+use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,10 +27,26 @@ use App\Http\Controllers\DashboardController;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
+Route::get('/posts', [Post::class, 'getPostsNotAuth']);
+Route::get('/comments/{postId}', [Post::class, 'getCommentsByPost']);
+
+
+
+
 Route::middleware('auth:api')->group(function () {
     Route::get('get-user', [AuthController::class, 'userInfo']);
-    Route::post('favoris/{postId}',[FavorisController::class,'makeFavoritePost']);
-    Route::get('/favorites',[Post::class,'favoritesPost']);
+    Route::post('favoris/{postId}', [FavorisController::class, 'makeFavoritePost']);
+    Route::get('/favorites', [Post::class, 'favoritesPost']);
+
+    // if user is logged in
+    Route::get('/newData', [Post::class, 'getPosts']);
+    Route::get('/post/{postId}', [Post::class, 'getPostByid']);
+    // Route::get('/getUsers', [UserController::class, 'allUsers']);
+    Route::post('addComment' , [Post::class , 'addComment']);
+
+
+
+
 
 
 

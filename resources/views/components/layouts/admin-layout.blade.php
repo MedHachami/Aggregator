@@ -1,15 +1,6 @@
-{{-- @extends('layouts.adminLayout') --}}
-
-{{-- @section('title', 'Dashboard') --}}
-
-{{-- @section('content') --}}
-{{-- --}}
-{{-- @endsection --}}
-
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from designreset.com/cork/html/modern-dark-menu/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 Jan 2024 10:24:16 GMT -->
 
 <head>
     <meta charset="utf-8">
@@ -36,42 +27,45 @@
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Include DataTables CSS and JS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.8/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.8/js/jquery.dataTables.js"></script>
+
     <script>
         const token = localStorage.getItem('token');
 
-        if(!token){
+        if (!token) {
             window.location.href = '/login';
-        }else{
+        } else {
             console.log('token');
             axios.get('api/get-user', {
-                headers: {
-                    'Authorization': 'Bearer ' + token,
-                }
-            })
-            .then((response) => {
-                var user = response.data.user;
-                console.log(user.roles);
-                if (user.roles != 'admin') {
-                    // window.location.href = '/';
-                }else{
+                    headers: {
+                        'Authorization': 'Bearer ' + token,
+                    }
+                })
+                .then((response) => {
+                    var user = response.data.user;
                     console.log(user.roles);
-                    console.log(user)
-                    document.getElementById('user').innerHTML =user.name;
-                    document.getElementById('roles').innerHTML =user.roles;
+                    if (user.roles != 'admin') {
+                        // window.location.href = '/';
+                    } else {
+                        console.log(user.roles);
+                        console.log(user)
+                        document.getElementById('user').innerHTML = user.name;
+                        document.getElementById('roles').innerHTML = user.roles;
 
-                }
+                    }
 
-            })
-            .catch((error) => {
-                // window.location.href = '/login';
+                })
+                .catch((error) => {
+                    // window.location.href = '/login';
 
-            });
+                });
 
         }
-
-
-
-
     </script>
     <style>
 
@@ -80,12 +74,7 @@
     <link href="{{ asset('css/dark/apps/notes.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/light/apps/notes.css') }}" rel="stylesheet" type="text/css" />
 
-<<<<<<< HEAD
-    <link rel="stylesheet" href="{{asset('css/pagination.css')}}">
 
-=======
->>>>>>> 4cd14aaba2b9571e120af2ca68cc52066d289175
-</head>
 
 <body class="layout-boxed">
     <!-- BEGIN LOADER -->
@@ -117,7 +106,7 @@
         <!--  END SIDEBAR  -->
 
         <!--  BEGIN CONTENT AREA  -->
-        {{$slot}}
+        {{ $slot }}
         <!--  END CONTENT AREA  -->
 
     </div>
@@ -136,6 +125,9 @@
     <script src="{{ asset('plugins/src/apex/apexcharts.min.js') }}"></script>
     <script src="{{ asset('js/dashboard/dash_1.js') }}"></script>
     <script src="{{ asset('js/apps/notes.js') }}"></script>
+
+    <script src="{{ asset('js/admin.js') }}"></script>
+
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 
 </body>

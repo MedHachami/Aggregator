@@ -27,6 +27,8 @@ class FluxRSSController extends Controller
             'category' => 'required',
         ]);
 
+        dd($request);
+
         if ($validator->fails()) {
             return back()
                 ->withErrors($validator)
@@ -36,7 +38,7 @@ class FluxRSSController extends Controller
         $feed = simplexml_load_file($request->url);
 
         foreach ($feed->channel->item as $item) {
-            $category_id = (int)$request->category;;
+            $category_id = (int)$request->category;
             // Get the image URL from media:thumbnail if present, otherwise use a default value
             $image = isset($item->children('media', true)->thumbnail['url'])
                 ? (string)$item->children('media', true)->thumbnail['url']

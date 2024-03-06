@@ -162,7 +162,7 @@ return [
          * Package Service Providers...
          */
         PassportServiceProvider::class,
-        Spatie\Permission\PermissionServiceProvider::class,
+        // Spatie\Permission\PermissionServiceProvider::class,
 
         /*
          * Application Service Providers...
