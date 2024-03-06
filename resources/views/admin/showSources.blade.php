@@ -8,35 +8,6 @@
                         <input id="t-text" type="text" name="searched" placeholder="Search" class="form-control" required="">
                     </div>
                     <h2>Posts:</h2>
-                    <form action="{{route('rss.send')}}" method="post">
-                        @csrf
-                        <div class="row mb-4">
-                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3  ms-auto">
-                                <select class="form-select form-select" aria-label="Default select example" name="category">
-                                    @foreach($categories as $categorie)
-                                        <option class="option" value="{{ $categorie->id }}" @if($categorie->id == 1) selected @endif>
-                                            {{ $categorie->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 ">
-                                <select class="form-select form-select" aria-label="Default select example" name="sort">
-                                    <option selected="">Sort By</option>
-                                    <option value="1">Recent</option>
-                                    <option value="2">Oldest</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="input-group d-flex justify-content-end row">
-                            <div @class('col-4 hidden')></div>
-                            <div @class('col-4 hidden')></div>
-                            <input type="submit" name="submit" placeholder="Submit Resource" class="form-control my-4 fw-bold shadow col-2 text-center" style="margin-right: 17px">
-                        </div>
-
-                    </form>
-
                 </div>
 
                 <div class="row">
@@ -144,3 +115,23 @@
     </div>
 
 </x-layouts.admin-layout>
+<script>
+    const searched = document.getElementById('t-text');
+    const cards = document.querySelectorAll('[card]');
+
+    function getSearched() {
+        console.log('cool');
+        for (let i = 0; i < cards.length; i++) {
+            if (!cards[i].innerHTML.includes(searched.value)) {
+                cards[i].style.display = 'none';
+            } else {
+                cards[i].style.display = 'block';
+            }
+        }
+    }
+
+    searched.addEventListener('input', getSearched);
+
+    const pagination = document.getElementsByClassName('pagination');
+</script>
+
